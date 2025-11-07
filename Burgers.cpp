@@ -39,7 +39,11 @@ inline double minmod(double alpha,double beta)
 //In the integrator, I will use a time loop, which will update time steps. Inside the time loop, I will definitely need space
 //loop to work with the values of the variables.
 void integrator(double ti, double tf, double xi, double xf, double dx, vector<double> q, int num_space_div) {
+<<<<<<< HEAD
     
+=======
+    double dt=0.01;  //Ideally, there should be a way to determine dt in each step. Using the Roe solver reference, I am not sure how to do this.
+>>>>>>> 95ea534a0276a0f9a229c949ab5ef646fd9ffbb7
     double x=xi+dx/2.0;
     ofstream burgers("burgers.txt");
     //First task is to write the initial data in the text file.
@@ -72,6 +76,7 @@ void integrator(double ti, double tf, double xi, double xf, double dx, vector<do
 
         vector<double> q_hold = q; //For RK2, I need to hold the values of q at time step n.
 
+<<<<<<< HEAD
 
         //Now I need to find out the value of dt. MY GUESS here is that, I have to get the lowest of the following,
         // 0.3 dx/q_reconstructed
@@ -88,6 +93,8 @@ void integrator(double ti, double tf, double xi, double xf, double dx, vector<do
 
         double dt= 0.3*dx/largest_reconstructed_variable;
 
+=======
+>>>>>>> 95ea534a0276a0f9a229c949ab5ef646fd9ffbb7
         //Then I update to time step n+1/2
         for(int i=2; i<=num_space_div+1;i++){
             q[i]= q[i] + (dt/2.0)*((numeric_Flux[i-2]-numeric_Flux[i-1])/dx); 
